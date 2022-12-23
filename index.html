@@ -1,0 +1,86 @@
+<html>
+
+<head>
+    <title>中間レポート課題1</title>
+    <script lang="JavaScript">
+        function trans(osu) {
+            kazu = osu;
+            var element = document.getElementById("choice");
+            var class_names = element.className;
+            element.className = "start";
+            element.insertAdjacentHTML('beforeend', '<p>以下のボタンを押してスタートしてください。</p>');
+            element.insertAdjacentHTML('beforeend', '<input type="button" value="start" onclick="create()">');
+            return kazu;
+        }
+
+        function create() {
+            alert('ボタンを押してゲームを開始します。');
+            var element = document.getElementById("choice");
+            var class_names = element.className;
+            element.className = "making";
+            today1 = new Date();
+            element.insertAdjacentHTML('beforeend', '<br><input type="button" value="generate" onclick="generate()">');
+        }
+
+        var today1 = new Date();
+
+        function generate() {
+            document.write("どれかのボタンを押してください。");
+            today2 = new Date(2);
+            var element = document.getElementById("choice");
+            document.write("<table border='3' id='table'>");
+            var count = 0;
+            var sum = 0;
+            for (sum = 0; sum < kazu; sum++) {
+                document.write("<tr>");
+                for (count = 0; count < kazu; count++) {
+                    var tasu = sum * kazu + count + 1;
+                    document.write(sokutei(tasu));
+                }
+                document.write("</tr>");
+            }
+        }
+
+        function sokutei(tasu) {
+            document.write("<th><input type='button' id='tasu' value=i onclick='jikan()'></th>");
+            var element = document.getElementById("tasu");
+            element.value = tasu;
+            element.id = tasu;
+            tasu = "";
+            return tasu;
+        }
+
+        var today2 = new Date();
+
+        function jikan() {
+            today2 = new Date();
+            timeminutes = today2.getMinutes() - today1.getMinutes();
+            timeseconds = today2.getSeconds() - today1.getSeconds();
+            if (timeseconds < 0) {
+                timeminutes -= 1;
+                timeseconds += 60;
+            }
+            alert('タイムは' + timeminutes + "分" + timeseconds + "秒です。");
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div class="select" id="choice">
+        下から好きな数字を選べ。
+        <form id="first">
+            <input name="atai" type="button" value="2" onclick="alert('2が入力されました。'),trans(2)">
+            <input name="atai" type="button" value="3" onclick="alert('3が入力されました。'),trans(3)">
+            <input name="atai" type="button" value="4" onclick="alert('4が入力されました。'),trans(4)">
+            <input name="atai" type="button" value="5" onclick="alert('5が入力されました。'),trans(5)">
+            <input name="atai" type="button" value="6" onclick="alert('6が入力されました。'),trans(6)">
+            <input name="atai" type="button" value="7" onclick="alert('7が入力されました。'),trans(7)">
+            <input name="atai" type="button" value="8" onclick="alert('8が入力されました。'),trans(8)">
+            <input name="atai" type="button" value="9" onclick="alert('9が入力されました。'),trans(9)">
+        </form>
+    </div>
+</body>
+
+</html>
